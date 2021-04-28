@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Список дел</title>
+  </head>
+  <body>
+    <div id ="dolist">
+      <div class="imgH2">
+        <div><img alt="Pencil text" src="img/pencil-text.png"></div>
+        <div><h2>Список дел</h2></div>
+      </div>
+      <p class="help"> &#9888; Интерактивный список дел с сохранением в локальном хранилище браузера.</p>
+      <form >
+        <label title="Введите текст. Нажмите Enter |&crarr;|">
+          <input id="inputText" type="text" size="30"  placeholder="Введите текст. Нажмите Enter |&crarr;|">
+        </label>
+        <input type="button" class="buttAdd" value="Добавить">
+      </form>
+      <ol class="list">
+        <!--Список дел-->
+      </ol>
+      <button onclick="save">Сохранить в браузере</button>
+    </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+#dolist {
+  border: 2px solid silver;
+  padding: 30px;
+  width:500px;
+  background-color: #f1f1f1;
+}
+
+.imgH2 {
+  display: flex;
+}
+
+.help {
+  font-size: 14px;
+  color:#777777;
+}
+
+img {
+  width: 50px;
+}
+
+h2 {
+  margin-left: 20px;
+  margin-bottom: 0px;
+}
+
+input[type=text]{
+   height:25px;
+}
+
+input:focus {
+  outline: 0;
+  outline-offset: 0;
+  border:2px solid silver;
+  box-shadow: 1px 1px 1px 0 silver;
+}
+
+.ButtAdd{
+   height:30px;
+   margin-left: 5px;
+}
+
+ol {
+  padding-left: 1em;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+.container {
+  display: flex;
+}
+
+.buttons {
+  margin-left: 5px;
+}
+
+.noneDisplay {
+  display:none
+}
+
+.visuDisplay {
+  display:block;
+}
+
+button:hover {
+  box-shadow: 1px 1px 1px 0 silver;
+  cursor: pointer;
+}
