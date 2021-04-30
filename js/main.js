@@ -26,13 +26,10 @@ $(document).ready(()=>{
       localStorage.removeItem('arrDoTo');
     }
   }
-  arrDo.forEach((item, i) => {
-    $(".list").html($(".list").html()
-    +"<li> <div class='container'> <div class='visuDisplay'>"
-    + item.text + "</div> <div class='noneDisplay'> <label title='Введите текст. Нажмите Enter |&crarr;|'>  <input type='text' size='30'> </label> </div> <div class='buttons'> <button  onclick='deleteDo()'>Удалить</button> <button onclick='buttEdit()'>Изменить</button> </div> </div> </li>");
-  });
+  updateList();
 });
 
+//Добавление пункта
 $(".buttAdd").on("click", ()=>{
   if (!$("#inputText").val()) return;
 
@@ -40,6 +37,46 @@ $(".buttAdd").on("click", ()=>{
   $("#inputText").val("");
 
   $(".list").html($(".list").html()
-  +"<li> <div class='container'> <div class='visuDisplay'>"
-  + arrDo[arrDo.length-1].text + "</div> <div class='noneDisplay'> <label title='Введите текст. Нажмите Enter |&crarr;|'>  <input type='text' size='30'> </label> </div> <div class='buttons'> <button  onclick='deleteDo()'>Удалить</button> <button onclick='buttEdit()'>Изменить</button> </div> </div> </li>");
+  +"<li id='pn" +(arrDo.length) + "'> <div class='container'> <div class='visuDisplay' name='point'>"
+  + arrDo[arrDo.length-1].text + "</div> <div class='noneDisplay'> <label title='Введите текст. Нажмите Enter |&crarr;|'>  <input type='text' size='30'> </label> </div> <div class='buttons'> <button  onclick='deleteDo(event)'>Удалить</button> <button onclick='buttEdit(event)'>Изменить</button> </div> </div> </li>");
 })
+
+//Удаление пунтка
+function deleteDo(event) {
+  let li = event.path[3];
+  n = Number(li.id.slice(2));
+  let newArr =[];
+  let i = 1;
+  arrDo.forEach( item => {
+    if (item.id != n) {
+      newArr.push({id: i, text: item.text});
+      i++;
+    }
+  });
+  arrDo = newArr;
+  updateList();
+}
+
+function updateList(){
+  $('ol').empty();
+  arrDo.forEach((item, i) => {
+    $(".list").html($(".list").html()
+    +"<li id='pn" +(i+1) + "'> <div class='container'> <div class='visuDisplay' name='point'>"
+    + item.text + "</div> <div class='noneDisplay'> <label title='Введите текст. Нажмите Enter |&crarr;|'>  <input type='text' size='30'> </label> </div> <div class='buttons'> <button  onclick='deleteDo(event)'>Удалить</button> <button onclick='buttEdit(event)'>Изменить</button> </div> </div> </li>");
+  });
+}
+
+
+//Сохранение в Local Storage
+$("#seveLS").on("click",()=>{
+  const parsed = JSON.stringify(arrDo);
+  localStorage.setItem('arrDoTo', parsed);
+})
+
+//Изменить пункт
+function buttEdit(event) {
+  let buf = event.path[2];
+  let el = buf.getElementsByName("point")[0];
+  console.log(buf);
+  console.log(el);
+}
