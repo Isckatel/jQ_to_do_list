@@ -38,6 +38,21 @@ $(".buttAdd").on("click", ()=>{
 
   updateList();
 })
+//Добавление пункта по нажатию Enter
+
+$("#inputText").keydown(function(event){
+    if(event.which == 13){
+      event.preventDefault();
+      if (!$("#inputText").val()) return false;
+
+      arrDo.push({id:arrDo.length+1,text:$("#inputText").val()});
+      $("#inputText").val("");
+
+      updateList();
+
+      return false;
+    }
+});
 
 //Удаление пунтка
 function deleteDo(event) {
@@ -93,17 +108,3 @@ $(".list").delegate("input","keydown",function (event) {
       updateList();
   }
 });
-
-// $(".change").keyup(function(e){
-//     alert("Entered!");
-//     var code = e.key; // recommended to use e.key, it's normalized across devices and languages
-//     if(code==="Enter") e.preventDefault();
-//     if(code==="Enter"){
-//         //$("#displaysomething").html($(this).val());
-//     } // missing closing if brace
-// });
-
-// $(document).on( "keydown", function(event) {
-//     if(event.which == 13)
-//         alert("Entered!");
-// });
